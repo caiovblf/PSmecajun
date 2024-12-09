@@ -1,0 +1,38 @@
+tabela_codigo_mole = {
+    'a': '.-', 'b': '-...', 'c': '-.-.', 'd': '-..', 'e': '.', 
+    'f': '..-.', 'g': '--.', 'h': '....', 'i': '..', 'j': '.---',
+    'k': '-.-', 'l': '.-..', 'm': '--', 'n': '-.', 'o': '---', 
+    'p': '.--.', 'q': '--.-', 'r': '.-.', 's': '...', 't': '-', 
+    'u': '..-', 'v': '...-', 'w': '.--', 'x': '-..-', 'y': '-.--', 
+    'z': '--..', '0': '-----', '1': '.----', '2': '..---', 
+    '3': '...--', '4': '....-', '5': '.....', '6': '-....', 
+    '7': '--...', '8': '---..', '9': '----.', '.': '.-.-.-', 
+    ',': '--..--', '?': '..--..', '!': '-.-.--', ':': '---...',
+    ';': '-.-.-.', ' ': '/'
+}
+
+mole_para_texto = {valor: chave for chave, valor in tabela_codigo_mole.items()}
+
+print("Cifrador e Decifrador de Código Mole")
+print("Escolha uma das opções:")
+print("1 - Cifrador")
+print("2 - Decifrador")
+aux = input("Digite 1 ou 2: ")
+
+if aux == "1":
+    texto = input("Insira o texto que deseja cifrar: ").lower()
+    try:
+        resultado = ' '.join(tabela_codigo_mole[char] for char in texto)
+        print(f"\nTexto cifrado em Código Mole: {resultado}")
+    except KeyError:
+        print("Erro: O texto contém caracteres inválidos para o código Mole.")
+
+elif aux == "2":
+    codigo = input("Digite o Código Mole para decifrar: ")
+    try:
+        resultado = ''.join(mole_para_texto[char] for char in codigo.split(' '))
+        print(f"\nTexto decifrado: {resultado}")
+    except KeyError:
+        print("Erro: Código Mole inválido.")
+else:
+    print("Opção inválida.")
